@@ -3,6 +3,9 @@ import Business.StudentManager;
 import Business.UserManager;
 import Entities.Instructor;
 import Entities.Student;
+import Entities.User;
+import Log.DatabaseLogger;
+import Log.EmailLogger;
 
 public class Main {
 
@@ -26,8 +29,9 @@ public class Main {
 		instructor.setCourse("Yazilim Gelistirici Yetistirici Kampı");
 		
 		UserManager userManager = new UserManager();
-		userManager.addUser(instructor);
-		
+		//userManager.addUser(instructor);
+		//userManager.add(new EmailLogger()); //Çoklu ekleme örneği
+		userManager.add(new DatabaseLogger());//Çoklu ekleme örneği
 		
 		InstructorManager instructorManager = new InstructorManager();
 		instructorManager.addCourse(instructor);
@@ -35,7 +39,7 @@ public class Main {
 		
 		
 		StudentManager studentManager=new StudentManager();
-		userManager.addUser(student);
+		//userManager.addUser(student);
 		studentManager.addAdress(student);
 		studentManager.addCard(student);
 		studentManager.editProfile(student);
