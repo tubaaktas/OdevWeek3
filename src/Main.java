@@ -4,8 +4,7 @@ import Business.UserManager;
 import Entities.Instructor;
 import Entities.Student;
 import Entities.User;
-import Log.DatabaseLogger;
-import Log.EmailLogger;
+
 
 public class Main {
 
@@ -28,18 +27,17 @@ public class Main {
 		instructor.setAbility("MCT - PMP - ITIL ");
 		instructor.setCourse("Yazilim Gelistirici Yetistirici Kampı");
 		
-		UserManager userManager = new UserManager();
-		//userManager.addUser(instructor);
-		//userManager.add(new EmailLogger()); //Çoklu ekleme örneği
-		userManager.add(new DatabaseLogger());//Çoklu ekleme örneği
+		
 		
 		InstructorManager instructorManager = new InstructorManager();
+		instructorManager.addUser(instructor);//Çoklu ekleme örneği
 		instructorManager.addCourse(instructor);
 		instructorManager.addAbilty(instructor);
 		
+		System.out.println("-----------------------------------------------------");
 		
 		StudentManager studentManager=new StudentManager();
-		//userManager.addUser(student);
+		studentManager.addUser(student);//Çoklu ekleme örneği
 		studentManager.addAdress(student);
 		studentManager.addCard(student);
 		studentManager.editProfile(student);
